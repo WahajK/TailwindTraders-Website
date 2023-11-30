@@ -5,6 +5,14 @@ variables:
   ImageName: website
 
 steps:
+- script: 
+    echo "Listing files in Deploy directory:"
+    ls "$(System.DefaultWorkingDirectory)/Deploy"
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '/Deploy/*.json'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: AzureResourceGroupDeployment@2
   displayName: Azure Deployment
   inputs:
