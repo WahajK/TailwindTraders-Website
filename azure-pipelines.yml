@@ -5,8 +5,7 @@ variables:
   ImageName: website
 
 steps:
-- script: 
-    echo "Listing files in Deploy directory:"
+- script:
     ls "$(System.DefaultWorkingDirectory)/Deploy"
 - task: CopyFiles@2
   inputs:
